@@ -19,10 +19,10 @@ const squares = document.querySelectorAll(".square");
 squares.forEach(square => {
 
     square.addEventListener('mouseover', (e) => {
-        e.target.style.color = "orange";
+        e.target.style.backgroundColor = "orange";
 
         setTimeout(() => {
-            e.target.style.color = "";
+            e.target.style.backgroundColor = "red";
           }, 500);     
 
     }, false);
