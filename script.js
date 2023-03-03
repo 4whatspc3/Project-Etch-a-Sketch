@@ -14,16 +14,16 @@ for (let i=0; i < 256; i++) {
 }
 
 
-const container = document.querySelector(".container");
+const squares = document.querySelectorAll(".square");
 
-container.addEventListener("mouseover", (e) => {
-      // highlight the mouseover target
-      e.target.style.color = "orange";
-  
-      // reset the color after a short delay
-      setTimeout(() => {
-        e.target.style.color = "";
-      }, 500);
-    },
-    false
-  );
+squares.forEach(square => {
+
+    square.addEventListener('mouseover', (e) => {
+        e.target.style.color = "orange";
+
+        setTimeout(() => {
+            e.target.style.color = "";
+          }, 500);     
+
+    }, false);
+})
