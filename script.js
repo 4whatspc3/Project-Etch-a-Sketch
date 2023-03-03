@@ -9,7 +9,7 @@ function createGrid(){
     return container.appendChild(square);
 }
 
-for (let i=0; i < 16; i++) {
+for (let i=0; i < 256; i++) {
    createGrid();
 }
 
