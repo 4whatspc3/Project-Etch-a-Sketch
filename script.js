@@ -13,3 +13,17 @@ for (let i=0; i < 256; i++) {
    createGrid();
 }
 
+
+const container = document.querySelector(".container");
+
+container.addEventListener("mouseover", (e) => {
+      // highlight the mouseover target
+      e.target.style.color = "orange";
+  
+      // reset the color after a short delay
+      setTimeout(() => {
+        e.target.style.color = "";
+      }, 500);
+    },
+    false
+  );
