@@ -3,8 +3,14 @@ function createGrid(){
 
     const square = document.createElement('div');
     square.classList.add('square');
-    square.setAttribute('style', 'background: red;');
-    square.textContent = 'just_a_test';
+    square.setAttribute('style', 
+                        `backgroundColor: white; 
+                         border: 1px solid black;
+                         borderCollapse: collapse;
+                         height: 50px;
+                         width: 50px;
+                         margin: 0;
+                         padding: 0;`);
 
     return container.appendChild(square);
 }
@@ -19,11 +25,6 @@ const squares = document.querySelectorAll(".square");
 squares.forEach(square => {
 
     square.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = "orange";
-
-        setTimeout(() => {
-            e.target.style.backgroundColor = "red";
-          }, 500);     
-
+        e.target.style.backgroundColor = "orange";     
     }, false);
 })
