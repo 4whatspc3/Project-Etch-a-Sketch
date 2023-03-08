@@ -1,3 +1,23 @@
+let valor;
+
+const btn = document.querySelector('.btn');
+
+    btn.addEventListener('click', (e) => {
+        valor = prompt(`How many squares per side?
+                            
+    (lowest value is 2, highest value is 100!)
+
+    `);
+
+        while ((valor < 2) || (valor > 100)){
+            valor = prompt(`Seems like you picked the wrong number
+            
+    Try again!`);
+    }
+    });
+
+console.log(valor);
+
 const cont = [];
 
 for (let i=0; i<16; i++){
@@ -56,19 +76,3 @@ squares.forEach(square => {
         e.target.style.backgroundColor = "orange";     
     }, false);
 })
-
-const btn = document.querySelector('.btn');
-
-btn.addEventListener('click', (e) => {
-    let valor = prompt(`How many squares per side?
-                          
-(lowest value is 2, highest value is 100!)
-
-`);
-
-    while ((valor < 2) || (valor > 100)){
-        valor = prompt(`Seems like you picked the wrong number
-        
-Try again!`);
-    }
-}) 
