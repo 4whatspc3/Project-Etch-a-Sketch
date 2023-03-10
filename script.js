@@ -23,10 +23,15 @@ function createGrid(){
             corridor = document.createElement('div');
             corridor.classList.add(`${cont[j]}`);
             corridor.setAttribute('style', `display: flex;
-                                        border: 1px solid black;
-                                        height: 50px;
-                                        width: 800px`);
-            
+                                            flex: 1 1 auto;
+                                            border-width: 0px 1px;
+                                            border-style: solid;
+                                            border-color: rgb(208,208,208);
+                                            height: auto;
+                                            width: 400px;
+                                            margin: 0;
+                                            padding: 0;`);
+                
             return container.appendChild(corridor);
         }
 
@@ -41,13 +46,14 @@ function createGrid(){
                 square.classList.add('square');
                 square.setAttribute('style', 
                                     `backgroundColor: white; 
-                                    border: 1px solid black;
-                                    borderCollapse: collapse;
-                                    height: 50px;
-                                    width: 50px;
+                                    border-width: 1px;
+                                    border-style: solid;
+                                    border-color: rgb(208,208,208);
+                                    height: auto;
+                                    width: 40px;
                                     margin: 0;
                                     padding: 0;
-                                    flex: 1 1 auto`);
+                                    flex: 1 1 auto;`);
             
                 return corridor.appendChild(square);
             }
