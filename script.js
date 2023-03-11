@@ -96,3 +96,31 @@ slider.addEventListener('input', () => {
     createGrid();
     paint();
 });
+
+const btn = document.querySelectorAll('button');
+
+btn.forEach(button => {
+    
+    button.addEventListener('click', (e) => {
+        
+        if (e.target.matches('.rainbow')) {
+            //code
+        }
+
+        if (e.target.matches('.shading')) {
+           //code
+        }
+
+        if (e.target.matches('.lighten')) {
+           //code
+        }
+
+        if (e.target.matches('.eraser')) {
+            //code
+        }
+
+        if (e.target.matches('.clear')) {
+            //code
+        }
+    });
+})
