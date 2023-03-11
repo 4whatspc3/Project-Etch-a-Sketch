@@ -1,10 +1,10 @@
-let valor = 16,
+let value = 16,
     cont = [];
 
 function numberOfSquares(){
     cont = [];
 
-    for (let i=0; i < valor; i++){
+    for (let i=0; i < value; i++){
         cont.push(`row${i}`);
     }
 
@@ -84,27 +84,15 @@ createGrid();
 
 paint();
 
-const btn = document.querySelector('.btn');
+const slider = document.querySelector('#myRange');
 
-btn.addEventListener('click', (e) => {
+slider.addEventListener('input', () => {
     const parent = document.querySelector(".container");
     empty(parent);
     
-    valor = prompt(`How many squares per side?
-                        
-(lowest value is 2, highest value is 100!)
+    value= Number(slider.value);
+    console.log(value);
 
-`);
-
-    while ((valor < 2) || (valor > 100)){
-        valor = prompt(`Seems like you picked the wrong number
-        
-Try again!`);
-}
-
-    valor = Number(valor);
-    
     createGrid();
-    
     paint();
 });
