@@ -1,6 +1,7 @@
 let value = 16,
     cont = [],
-    color = `rgb(255,165,0)`;
+    color = `rgb(255,165,0)`,
+    keyButton;
 
 function numberOfSquares(){
     cont = [];
@@ -78,25 +79,16 @@ function randomColor(){
     return `rgb(${r},${g},${b})`;
 }
 
-function makeRainbow(){
-    const squares = document.querySelectorAll(".square");
-
-    squares.forEach(square => {
-        
-        square.addEventListener('mouseover', (e) => {
-            color = randomColor();
-            
-            e.target.style.backgroundColor = `${color}`;     
-        }, false);
-    })
-}
-
 function paint(){
     const squares = document.querySelectorAll(".square");
 
     squares.forEach(square => {
         
         square.addEventListener('mouseover', (e) => {            
+            if (keyButton == 'rainbow'){
+                color = randomColor();
+            }
+
             e.target.style.backgroundColor = `${color}`;     
         }, false);
     })
@@ -118,6 +110,7 @@ slider.addEventListener('input', () => {
     
     value= Number(slider.value);
     
+    keyButton = '';
     color = `rgb(255,165,0)`;
     createGrid();
     paint();
@@ -130,7 +123,8 @@ btn.forEach(button => {
     button.addEventListener('click', (e) => {
         
         if (e.target.matches('.rainbow')) {
-            makeRainbow();
+            keyButton = 'rainbow';
+            paint();
         }
 
         if (e.target.matches('.shading')) {
