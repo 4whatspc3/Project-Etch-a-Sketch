@@ -1,6 +1,8 @@
 let value = 16,
     cont = [],
     color = `rgb(255,165,0)`,
+    n = 100,
+    currentBright,
     keyButton;
 
 function numberOfSquares(){
@@ -47,7 +49,8 @@ function createGrid(){
                 const square = document.createElement('div');
                 square.classList.add('square');
                 square.setAttribute('style', 
-                                    `backgroundColor: white; 
+                                    `filter: brightness(${n}%);
+                                    backgroundColor: white; 
                                     border-width: 1px;
                                     border-style: solid;
                                     border-color: rgb(208,208,208);
@@ -79,6 +82,18 @@ function randomColor(){
     return `rgb(${r},${g},${b})`;
 }
 
+
+function makeItDarker(currentBright){
+    let finalBright = currentBright - 5;
+
+    if (currentBright < 0) {
+        finalBright = 0;
+    }
+
+    return finalBright
+}
+
+
 function paint(){
     const squares = document.querySelectorAll(".square");
 
@@ -89,7 +104,24 @@ function paint(){
                 color = randomColor();
             }
 
-            e.target.style.backgroundColor = `${color}`;     
+            e.target.style.backgroundColor = `${color}`;
+            
+            if (keyButton == 'shading'){
+                bright = e.target.style.filter;
+                console.log(bright.length)
+                
+                if (bright.length == 14){
+                    currentBright = Number(bright.slice(11, 12));
+                } else if (bright.length == 15){
+                    currentBright = Number(bright.slice(11, 13));
+                } else {
+                    currentBright = Number(bright.slice(11, 14));
+                }
+
+                n = makeItDarker(currentBright);
+            }
+            
+            e.target.style.filter = `brightness(${n}%)`;
         }, false);
     })
 }
@@ -112,6 +144,7 @@ slider.addEventListener('input', () => {
     
     keyButton = '';
     color = `rgb(255,165,0)`;
+    n = 100;
     createGrid();
     paint();
 });
@@ -128,7 +161,8 @@ btn.forEach(button => {
         }
 
         if (e.target.matches('.shading')) {
-           //code
+           keyButton = 'shading';
+           paint();
         }
 
         if (e.target.matches('.lighten')) {
