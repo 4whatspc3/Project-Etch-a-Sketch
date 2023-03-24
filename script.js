@@ -86,8 +86,18 @@ function randomColor(){
 function makeItDarker(currentBright){
     let finalBright = currentBright - 5;
 
-    if (currentBright < 0) {
+    if (currentBright <= 0) {
         finalBright = 0;
+    }
+
+    return finalBright
+}
+
+function makeItClear(currentBright){
+    let finalBright = currentBright + 5;
+
+    if (currentBright >= 100) {
+        finalBright = 100;
     }
 
     return finalBright
@@ -119,6 +129,21 @@ function paint(){
                 }
 
                 howBright = makeItDarker(currentBright);
+            }
+
+            if (keyButton == 'lighten'){
+                bright = e.target.style.filter;
+                console.log(bright.length)
+                
+                if (bright.length == 14){
+                    currentBright = Number(bright.slice(11, 12));
+                } else if (bright.length == 15){
+                    currentBright = Number(bright.slice(11, 13));
+                } else {
+                    currentBright = Number(bright.slice(11, 14));
+                }
+
+                howBright = makeItClear(currentBright);
             }
             
             e.target.style.filter = `brightness(${howBright}%)`;
@@ -166,7 +191,8 @@ btn.forEach(button => {
         }
 
         if (e.target.matches('.lighten')) {
-           //code
+            keyButton = 'lighten';
+            paint();
         }
 
         if (e.target.matches('.eraser')) {
