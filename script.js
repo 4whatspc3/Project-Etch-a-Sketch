@@ -1,7 +1,7 @@
 let value = 16,
     cont = [],
     color = `rgb(255,165,0)`,
-    n = 100,
+    howBright = 100,
     currentBright,
     keyButton;
 
@@ -49,7 +49,7 @@ function createGrid(){
                 const square = document.createElement('div');
                 square.classList.add('square');
                 square.setAttribute('style', 
-                                    `filter: brightness(${n}%);
+                                    `filter: brightness(${howBright}%);
                                     backgroundColor: white; 
                                     border-width: 1px;
                                     border-style: solid;
@@ -118,10 +118,10 @@ function paint(){
                     currentBright = Number(bright.slice(11, 14));
                 }
 
-                n = makeItDarker(currentBright);
+                howBright = makeItDarker(currentBright);
             }
             
-            e.target.style.filter = `brightness(${n}%)`;
+            e.target.style.filter = `brightness(${howBright}%)`;
         }, false);
     })
 }
@@ -144,7 +144,7 @@ slider.addEventListener('input', () => {
     
     keyButton = '';
     color = `rgb(255,165,0)`;
-    n = 100;
+    howBright = 100;
     createGrid();
     paint();
 });
