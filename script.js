@@ -205,7 +205,13 @@ btn.forEach(button => {
         }
 
         if (e.target.matches('.clear')) {
-            //code
+            const parent = document.querySelector(".container");
+            
+            empty(parent);
+            
+            createGrid();
+
+            paint();
         }
     });
 })
