@@ -114,6 +114,10 @@ function paint(){
                 color = randomColor();
             }
 
+            if (keyButton == 'eraser'){
+                color = 'white';
+            }
+
             e.target.style.backgroundColor = `${color}`;
             
             if (keyButton == 'shading'){
@@ -196,7 +200,8 @@ btn.forEach(button => {
         }
 
         if (e.target.matches('.eraser')) {
-            //code
+            keyButton = 'eraser';
+            paint();
         }
 
         if (e.target.matches('.clear')) {
