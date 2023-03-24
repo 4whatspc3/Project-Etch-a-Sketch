@@ -93,7 +93,7 @@ function makeItDarker(currentBright){
     return finalBright
 }
 
-function makeItClear(currentBright){
+function makeItBrighter(currentBright){
     let finalBright = currentBright + 5;
 
     if (currentBright >= 100) {
@@ -147,7 +147,7 @@ function paint(){
                     currentBright = Number(bright.slice(11, 14));
                 }
 
-                howBright = makeItClear(currentBright);
+                howBright = makeItBrighter(currentBright);
             }
             
             e.target.style.filter = `brightness(${howBright}%)`;
