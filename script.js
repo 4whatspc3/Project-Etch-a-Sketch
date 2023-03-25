@@ -22,7 +22,7 @@ function createGrid(){
         let corridor = cont[j];
         
         function createRow(corridor){
-            const container = document.querySelector('div');
+            const container = document.querySelector('.container');
         
             corridor = document.createElement('div');
             corridor.classList.add(`${cont[j]}`);
