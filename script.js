@@ -113,10 +113,14 @@ function paint(){
                 howBright = makeItDarker(currentBright);
 
                 e.target.style.filter = `brightness(${howBright}%)`;
+
             } else {
+                if (keyButton == 'default'){
+                    color = `rgb(0, 0, 0)`;
+                }
+                
                 if (keyButton == 'rainbow'){
                     color = randomColor();
-                    
                 }
     
                 if (keyButton == 'eraser'){
@@ -124,6 +128,7 @@ function paint(){
                 }
 
                 e.target.style.filter = `brightness(100%)`;
+
                 e.target.style.backgroundColor = `${color}`;
             }
         }, false);
@@ -158,6 +163,10 @@ const btn = document.querySelectorAll('button');
 btn.forEach(button => {
     
     button.addEventListener('click', (e) => {
+        if (e.target.matches('.default')) {
+            keyButton = 'default';
+            paint();
+        }
         
         if (e.target.matches('.rainbow')) {
             keyButton = 'rainbow';
