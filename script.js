@@ -82,7 +82,6 @@ function randomColor(){
     return `rgb(${r},${g},${b})`;
 }
 
-
 function makeItDarker(currentBright){
     let finalBright = currentBright - 5;
 
@@ -92,17 +91,6 @@ function makeItDarker(currentBright){
 
     return finalBright
 }
-
-function makeItBrighter(currentBright){
-    let finalBright = currentBright + 5;
-
-    if (currentBright >= 100) {
-        finalBright = 100;
-    }
-
-    return finalBright
-}
-
 
 function paint(){
     const squares = document.querySelectorAll(".square");
@@ -133,21 +121,6 @@ function paint(){
                 }
 
                 howBright = makeItDarker(currentBright);
-            }
-
-            if (keyButton == 'lighten'){
-                bright = e.target.style.filter;
-                console.log(bright.length)
-                
-                if (bright.length == 14){
-                    currentBright = Number(bright.slice(11, 12));
-                } else if (bright.length == 15){
-                    currentBright = Number(bright.slice(11, 13));
-                } else {
-                    currentBright = Number(bright.slice(11, 14));
-                }
-
-                howBright = makeItBrighter(currentBright);
             }
             
             e.target.style.filter = `brightness(${howBright}%)`;
@@ -192,11 +165,6 @@ btn.forEach(button => {
         if (e.target.matches('.shading')) {
            keyButton = 'shading';
            paint();
-        }
-
-        if (e.target.matches('.lighten')) {
-            keyButton = 'lighten';
-            paint();
         }
 
         if (e.target.matches('.eraser')) {
