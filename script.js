@@ -28,6 +28,7 @@ function createGrid(){
             corridor.classList.add(`${cont[j]}`);
             corridor.setAttribute('style', `display: flex;
                                             flex: 1 1 auto;
+                                            backgroundColor: rgb(255,255,255);
                                             border-width: 0px 1px;
                                             border-style: solid;
                                             border-color: rgb(208,208,208);
@@ -50,7 +51,7 @@ function createGrid(){
                 square.classList.add('square');
                 square.setAttribute('style', 
                                     `filter: brightness(${howBright}%);
-                                    backgroundColor: white; 
+                                    backgroundColor: rgb(255,255,255); 
                                     border-width: 1px;
                                     border-style: solid;
                                     border-color: rgb(208,208,208);
@@ -98,19 +99,8 @@ function paint(){
     squares.forEach(square => {
         
         square.addEventListener('mouseover', (e) => {            
-            if (keyButton == 'rainbow'){
-                color = randomColor();
-            }
-
-            if (keyButton == 'eraser'){
-                color = 'white';
-            }
-
-            e.target.style.backgroundColor = `${color}`;
-            
             if (keyButton == 'shading'){
                 bright = e.target.style.filter;
-                console.log(bright.length)
                 
                 if (bright.length == 14){
                     currentBright = Number(bright.slice(11, 12));
@@ -121,9 +111,21 @@ function paint(){
                 }
 
                 howBright = makeItDarker(currentBright);
+
+                e.target.style.filter = `brightness(${howBright}%)`;
+            } else {
+                if (keyButton == 'rainbow'){
+                    color = randomColor();
+                    
+                }
+    
+                if (keyButton == 'eraser'){
+                    color = `rgb(255, 255, 255)`;
+                }
+
+                e.target.style.filter = `brightness(100%)`;
+                e.target.style.backgroundColor = `${color}`;
             }
-            
-            e.target.style.filter = `brightness(${howBright}%)`;
         }, false);
     })
 }
@@ -145,7 +147,7 @@ slider.addEventListener('input', () => {
     value= Number(slider.value);
     
     keyButton = '';
-    color = `rgb(0,0,0)`;
+    color = `rgb(0, 0, 0)`;
     howBright = 100;
     createGrid();
     paint();
@@ -175,6 +177,10 @@ btn.forEach(button => {
         if (e.target.matches('.clear')) {
             const parent = document.querySelector(".container");
             
+            color = `rgb(0, 0, 0)`;
+
+            keyButton = '';
+
             empty(parent);
             
             createGrid();
