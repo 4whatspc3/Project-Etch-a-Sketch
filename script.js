@@ -1,6 +1,6 @@
 let value = 16,
     cont = [],
-    color = `rgb(255,165,0)`,
+    color = `rgb(0,0,0)`,
     howBright = 100,
     currentBright,
     keyButton;
@@ -145,7 +145,7 @@ slider.addEventListener('input', () => {
     value= Number(slider.value);
     
     keyButton = '';
-    color = `rgb(255,165,0)`;
+    color = `rgb(0,0,0)`;
     howBright = 100;
     createGrid();
     paint();
